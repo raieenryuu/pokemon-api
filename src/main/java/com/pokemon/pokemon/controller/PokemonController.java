@@ -1,8 +1,14 @@
 package com.pokemon.pokemon.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pokemon.pokemon.domain.Pokemon;
+import com.pokemon.pokemon.requests.Call;
 import com.pokemon.pokemon.service.PokemonService;
+import org.json.JSONObject;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,14 +25,20 @@ public class PokemonController {
 
 
     @GetMapping("/v1/pokemon")
-    public List<Pokemon> getAll() {
-        return service.getAll();
+    public String getAll() {
+        return Call.getCache();
     }
 
 
     @GetMapping("/v1/pokemon/{id}")
-    public String getPokemonById(@PathVariable Long id) {
-        return service.getPokemonById(id);
+    @ResponseBody
+    public ResponseEntity<JsonNode> getPokemonById(@PathVariable Long id) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode json = mapper.readTree(service.getPokemonById(id));
+
+        return ResponseEntity.ok(json);
+
+
     }
 
     @PostMapping("/v1/pokemon")

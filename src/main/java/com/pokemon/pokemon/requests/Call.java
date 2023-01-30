@@ -7,14 +7,12 @@ import java.io.IOException;
 
 public class Call {
 
-    private String cache;
-    private Long previousId;
-
-
+    private static String cache;
+    private static Long previousId;
     public Call() {
     }
 
-    public void makeCall(Long id) {
+    public static void makeCall(Long id) {
 
         if (id == previousId) {
             return;
@@ -38,8 +36,8 @@ public class Call {
 
 
     };
-    public String getCache() {
-        return this.cache;
+    public static String getCache() {
+        return cache;
     }
 
 

@@ -3,6 +3,7 @@ package com.pokemon.pokemon.service;
 import com.pokemon.pokemon.domain.Pokemon;
 import com.pokemon.pokemon.repository.PokemonRepository;
 import com.pokemon.pokemon.requests.Call;
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
