@@ -2,6 +2,7 @@ package com.pokemon.pokemon.service;
 
 import com.pokemon.pokemon.domain.Pokemon;
 import com.pokemon.pokemon.repository.PokemonRepository;
+import com.pokemon.pokemon.requests.Call;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,8 +30,15 @@ public class PokemonService implements IPokemonService{
     }
 
     @Override
-    public Pokemon getPokemonById(Long id) {
-        return repository.findById(id).orElse(null);
+    public String getPokemonById(Long id) {
+
+        Call newCall = new Call();
+        newCall.makeCall(id);
+        String body = newCall.getCache();
+
+        return body;
+
+
     }
 
     @Override

@@ -25,7 +25,7 @@ public class PokemonController {
 
 
     @GetMapping("/v1/pokemon/{id}")
-    public Pokemon getPokemonById(@PathVariable Long id) {
+    public String getPokemonById(@PathVariable Long id) {
         return service.getPokemonById(id);
     }
 
