@@ -2,8 +2,6 @@ package com.pokemon.pokemon.domain;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "pokemons")
 public class Pokemon {
 
     @Id

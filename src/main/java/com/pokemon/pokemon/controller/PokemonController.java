@@ -41,22 +41,6 @@ public class PokemonController {
 
     }
 
-    @PostMapping("/v1/pokemon")
-    public Pokemon newPokemon(@RequestBody Pokemon newPokemon) {
-        return service.create(newPokemon);
-    }
-
-
-    @PutMapping("/v1/pokemon")
-    public Pokemon updatePokemon(@RequestBody Pokemon updatedPokemon, @PathVariable Long id) {
-        return service.replacePokemonById(id, updatedPokemon);
-    }
-
-
-    @DeleteMapping("/v1/pokemon")
-    public void deletePokemon(@PathVariable Long id) {
-        service.deletePokemonById(id);
-    }
 
 
 }

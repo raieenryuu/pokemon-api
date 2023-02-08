@@ -6,13 +6,9 @@ import org.json.JSONObject;
 import java.util.List;
 
 public interface IPokemonService {
-    List<Pokemon> getAll();
+
     String getPokemonById(Long id);
 
-    Pokemon create(Pokemon pokemon);
-
-    Pokemon replacePokemonById(Long id, Pokemon updatedPokemon);
-    void deletePokemonById(Long id);
 
 
 
