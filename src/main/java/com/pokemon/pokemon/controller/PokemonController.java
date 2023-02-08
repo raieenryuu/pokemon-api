@@ -4,13 +4,15 @@ package com.pokemon.pokemon.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.pokemon.pokemon.domain.Pokemon;
 import com.pokemon.pokemon.requests.Call;
 import com.pokemon.pokemon.service.PokemonService;
-import org.json.JSONObject;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -32,11 +34,18 @@ public class PokemonController {
 
     @GetMapping("/v1/pokemon/{id}")
     @ResponseBody
-    public ResponseEntity<JsonNode> getPokemonById(@PathVariable Long id) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode json = mapper.readTree(service.getPokemonById(id));
+    public Pokemon getPokemonById(@PathVariable Long id) throws IOException {
+        String json = service.getPokemonById(id);
 
-        return ResponseEntity.ok(json);
+        Gson gson = new GsonBuilder().serializeNulls().create();
+
+
+        Pokemon pokemon= gson.fromJson(json, Pokemon.class);
+
+        return pokemon;
+
+
+
 
 
     }
