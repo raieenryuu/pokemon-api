@@ -1,10 +1,17 @@
 package com.pokemon.pokemon.service;
 
 
+import com.pokemon.pokemon.domain.Pokemon;
+
+import java.util.ArrayList;
 
 public interface IPokemonService {
 
-    String getPokemonById(Long id);
+    Pokemon getPokemonById(Long id);
+
+    ArrayList<Pokemon> getAll();
+
+    Pokemon createPokemon(Pokemon newPokemon);
 
 
 

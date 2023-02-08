@@ -1,4 +1,4 @@
-package com.pokemon.pokemon.requests;
+package com.pokemon.pokemon.helpers;
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
