@@ -11,7 +11,6 @@ public class Cache implements ICache {
     private static ArrayList<Pokemon> cache = new ArrayList<Pokemon>();
 
 
-    @Override
     public void add(Pokemon pokemon) {
 
         Pokemon existingPokemon = get(pokemon.id);
@@ -23,7 +22,6 @@ public class Cache implements ICache {
         }
     }
 
-    @Override
     public void delete(Integer id) {
 
         Pokemon foundPokemon = get(id);
@@ -32,7 +30,6 @@ public class Cache implements ICache {
 
     }
 
-    @Override
     public Pokemon update(Integer id, Pokemon updatedPokemon) {
 
         delete(id);
@@ -45,14 +42,12 @@ public class Cache implements ICache {
 
     }
 
-    @Override
     public Pokemon get(Integer id) {
 
         return cache.stream().filter(pokemon -> id.equals(pokemon.id)).findAny().orElse(null);
 
     }
 
-    @Override
     public ArrayList<Pokemon> getAll() {
 
         return cache;

@@ -19,7 +19,6 @@ public class PokemonService implements IPokemonService{
 
 
 
-    @Override
     public Pokemon getPokemonById(Integer id) {
 
         Call newCall = new Call();
@@ -36,24 +35,20 @@ public class PokemonService implements IPokemonService{
         return pokemon;
     }
 
-    @Override
     public ArrayList<Pokemon> getAll() {
         return cache.getAll();
     }
 
 
-    @Override
     public Pokemon createPokemon(Pokemon newPokemon) {
         cache.add(newPokemon);
         return newPokemon;
     }
 
-    @Override
     public void deletePokemonById(Integer id) {
         cache.delete(id);
     }
 
-    @Override
     public Pokemon updatePokemonById(Integer id, Pokemon updatedPokemon) {
         return cache.update(id, updatedPokemon);
     }
