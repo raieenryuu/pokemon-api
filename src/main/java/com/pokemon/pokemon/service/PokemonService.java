@@ -8,6 +8,8 @@ import com.pokemon.pokemon.helpers.Cache;
 import com.pokemon.pokemon.helpers.Call;
 import org.springframework.stereotype.Service;
 
+import java.net.URI;
+import java.net.http.HttpRequest;
 import java.util.ArrayList;
 
 
@@ -21,9 +23,15 @@ public class PokemonService implements IPokemonService{
 
     public Pokemon getPokemonById(Integer id) {
 
-        Call newCall = new Call();
-        newCall.makeCall(id);
-        String body = newCall.getCache();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/" + id))
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
+
+
+
+        String body = Call.makeCall(request);
 
         Gson gson = new GsonBuilder().serializeNulls().create();
 
