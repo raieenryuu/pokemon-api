@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public interface ICache {
 
     void add(Pokemon pokemon);
-    void delete();
-    void update();
+    void delete(Integer id);
+    Pokemon update(Integer id, Pokemon updatedPokemon);
     Pokemon get(Integer id);
 
     ArrayList<Pokemon> getAll();
+
+
 
 }

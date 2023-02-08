@@ -8,11 +8,11 @@ import java.io.IOException;
 public class Call {
 
     private static String cache;
-    private static Long previousId;
+    private static Integer previousId;
     public Call() {
     }
 
-    public static void makeCall(Long id) {
+    public static void makeCall(Integer id) {
 
         if (id == previousId) {
             return;

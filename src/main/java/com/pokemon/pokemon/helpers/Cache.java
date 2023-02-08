@@ -24,12 +24,24 @@ public class Cache implements ICache {
     }
 
     @Override
-    public void delete() {
+    public void delete(Integer id) {
+
+        Pokemon foundPokemon = get(id);
+
+        cache.remove(foundPokemon);
 
     }
 
     @Override
-    public void update() {
+    public Pokemon update(Integer id, Pokemon updatedPokemon) {
+
+        delete(id);
+        add(updatedPokemon);
+
+        return updatedPokemon;
+
+
+
 
     }
 

@@ -4,6 +4,7 @@ package com.pokemon.pokemon.controller;
 import com.pokemon.pokemon.domain.Pokemon;
 import com.pokemon.pokemon.helpers.Call;
 import com.pokemon.pokemon.service.PokemonService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class PokemonController {
 
     @GetMapping("/v1/pokemon/{id}")
     @ResponseBody
-    public Pokemon getPokemonById(@PathVariable Long id) {
+    public Pokemon getPokemonById(@PathVariable Integer id) {
         return service.getPokemonById(id);
 
 
@@ -44,5 +45,19 @@ public class PokemonController {
     }
 
 
+    @DeleteMapping("/v1/pokemon/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deletePokemonById(@PathVariable Integer id) {
+
+        service.deletePokemonById(id);
+    }
+
+
+    @PutMapping("/v1/pokemon/{id}")
+    public Pokemon updatePokemonById(@PathVariable Integer id, @RequestBody Pokemon updatedPokemon) {
+
+        return service.updatePokemonById(id, updatedPokemon);
+
+    }
 
 }
