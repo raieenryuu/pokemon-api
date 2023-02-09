@@ -2,6 +2,7 @@ package com.pokemon.pokemon.helpers;
 
 import com.pokemon.pokemon.domain.Pokemon;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.ErrorResponseException;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public class Cache implements ICache {
     public void add(Pokemon pokemon) {
 
         Pokemon existingPokemon = get(pokemon.id);
+
 
         if (existingPokemon == null) {
 

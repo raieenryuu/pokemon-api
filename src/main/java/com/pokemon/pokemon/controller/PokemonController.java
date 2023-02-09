@@ -5,6 +5,7 @@ import com.pokemon.pokemon.domain.Pokemon;
 import com.pokemon.pokemon.helpers.Call;
 import com.pokemon.pokemon.service.PokemonService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -59,5 +60,8 @@ public class PokemonController {
         return service.updatePokemonById(id, updatedPokemon);
 
     }
+
+
+
 
 }

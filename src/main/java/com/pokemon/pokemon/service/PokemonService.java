@@ -7,10 +7,15 @@ import com.pokemon.pokemon.domain.Pokemon;
 import com.pokemon.pokemon.helpers.Cache;
 import com.pokemon.pokemon.helpers.Call;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ServerErrorException;
 
+
+import javax.swing.text.html.parser.Entity;
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
+
 
 
 @Service
@@ -24,23 +29,56 @@ public class PokemonService implements IPokemonService{
     public Pokemon getPokemonById(Integer id) {
 
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/" + id))
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
+
+
+        try {
+
+            Pokemon cachedPokemon = cache.get(id);
+
+            if (cachedPokemon != null) {
+
+                return cachedPokemon;
+            }
+
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("https://pokeapi.co/api/v2/pokemon/" + id))
+                    .method("GET", HttpRequest.BodyPublishers.noBody())
+                    .build();
 
 
 
-        String body = Call.makeCall(request);
-
-        Gson gson = new GsonBuilder().serializeNulls().create();
-
-        Pokemon pokemon = gson.fromJson(body, Pokemon.class);
-
-        cache.add(pokemon);
+            String body = Call.makeCall(request);
 
 
-        return pokemon;
+            if (body.contains("Not Found")) {
+
+
+                throw new NoSuchElementException("This pokemon was not found");
+            }
+
+            Gson gson = new GsonBuilder().serializeNulls().create();
+
+            Pokemon pokemon = gson.fromJson(body, Pokemon.class);
+
+            cache.add(pokemon);
+
+
+            return pokemon;
+
+
+
+        }  catch (Exception exception){
+
+            throw new ServerErrorException("Something Wrong happened in the server", exception);
+
+
+        }
+
+
+
+
+
     }
 
     public ArrayList<Pokemon> getAll() {
@@ -49,15 +87,55 @@ public class PokemonService implements IPokemonService{
 
 
     public Pokemon createPokemon(Pokemon newPokemon) {
-        cache.add(newPokemon);
-        return newPokemon;
+
+        try {
+
+            cache.add(newPokemon);
+            return newPokemon;
+
+        } catch (Exception exception){
+
+            throw new ServerErrorException("Something Wrong happened in the server", exception);
+
+
+        }
+
     }
 
     public void deletePokemonById(Integer id) {
-        cache.delete(id);
+        try {
+
+            cache.delete(id);
+
+
+        }  catch (Exception exception){
+
+            throw new ServerErrorException("Something Wrong happened in the server", exception);
+
+
+        }
+
+
+
     }
 
+
     public Pokemon updatePokemonById(Integer id, Pokemon updatedPokemon) {
-        return cache.update(id, updatedPokemon);
+        try {
+            return cache.update(id, updatedPokemon);
+
+
+        }  catch (Exception exception){
+
+            throw new ServerErrorException("Something Wrong happened in the server", exception);
+
+
+        }
+
+
+
     }
+
+
+
 }
