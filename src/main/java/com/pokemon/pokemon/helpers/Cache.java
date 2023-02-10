@@ -2,11 +2,14 @@ package com.pokemon.pokemon.helpers;
 
 import com.pokemon.pokemon.domain.Pokemon;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.web.ErrorResponseException;
 
 import java.util.ArrayList;
 
 
+
+@Component
 public class Cache implements ICache {
 
     private static ArrayList<Pokemon> cache = new ArrayList<Pokemon>();

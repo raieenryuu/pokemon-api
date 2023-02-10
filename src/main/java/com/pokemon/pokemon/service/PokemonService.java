@@ -22,7 +22,11 @@ import java.util.NoSuchElementException;
 public class PokemonService implements IPokemonService{
 
 
-    private  Cache cache = new Cache();
+    private  Cache cache;
+
+     PokemonService(Cache cache) {
+        this.cache = cache;
+     }
 
 
 
