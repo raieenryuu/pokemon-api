@@ -86,7 +86,7 @@ POST /v1/pokemon
 ### Atualizar um pokemon por seu ID
 
 ```
-PUT /v1/pokemon
+PUT /v1/pokemon/{id}
 ```
 
 ### Deletar um Pokemon por seu ID
