@@ -38,7 +38,7 @@ Basta acessar o repositório de seu terminar e utilizar o seguinte comando:
 
 ```console
 user@user:~/pokemon-api docker compose up
-``
+```
 E é basicamente isso. O aplicativo já estará rodando em sua máquina com a magia do Docker. Voce nem precisa ter o Java instalado.
 
 O próximo método é mais complicado, você precisará ter o JDK 19 instalado. Com o diretório da api em seu terminal, você precisará criar um arquivo
