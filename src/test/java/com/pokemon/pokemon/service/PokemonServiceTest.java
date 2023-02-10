@@ -34,14 +34,14 @@ class PokemonServiceTest {
     @Test
     void getPokemonById() {
 
-//        Pokemon pokemon = underTest.getPokemonById(1);
-//
-//        assertEquals(pokemon.getId(), 1);
-//        assertEquals(pokemon.getName(), "bulbasaur");
-//        assertEquals(pokemon.getHeight(),7);
-//        assertEquals(pokemon.getWeight(), 69);
-//
-//
+        Pokemon pokemon = underTest.getPokemonById(1);
+
+        assertEquals(pokemon.getId(), 1);
+        assertEquals(pokemon.getName(), "bulbasaur");
+        assertEquals(pokemon.getHeight(),7);
+        assertEquals(pokemon.getWeight(), 69);
+
+
 //
 //        HttpRequest request = HttpRequest.newBuilder()
 //                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/1"))
@@ -49,8 +49,8 @@ class PokemonServiceTest {
 //                .build();
 //
 //        verify(call).makeCall(request);
-//
-//        verify(cache).add(pokemon);
+
+        verify(cache).add(pokemon);
     }
 
     @Test

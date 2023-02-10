@@ -10,10 +10,10 @@ import java.io.IOException;
 @Component
 public class Call {
 
-    public  String makeCall(HttpRequest request) {
-        try {
-            HttpResponse<String> response;
+    public static String makeCall(HttpRequest request) {
 
+        try {
+            HttpResponse<String> response = null;
             response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
             return response.body();
         } catch (IOException e) {

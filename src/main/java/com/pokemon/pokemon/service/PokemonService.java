@@ -35,9 +35,6 @@ public class PokemonService implements IPokemonService{
 
     public Pokemon getPokemonById(Integer id) {
 
-
-
-
         try {
 
             Pokemon cachedPokemon = cache.get(id);
