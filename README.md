@@ -63,3 +63,45 @@ Por padrão a aplicação estará sendo executada na porta 8080 do localhost
 http://localhost:8080
 ```
 
+Os seguintes endpoints estão configurados:
+
+### Retornar todos os Pokemon
+
+```
+GET /v1/pokemon/
+```
+
+### Retornar um Pokemon por seu ID
+
+```
+GET /v1/pokemon/{id}
+```
+
+### Criar um Pokemon
+
+```
+POST /v1/pokemon
+```
+
+### Atualizar um pokemon por seu ID
+
+```
+PUT /v1/pokemon
+```
+
+### Deletar um Pokemon por seu ID
+
+```
+DELETE /v1/pokemon/{id}
+```
+
+### Alguns detalhes
+
+Nessa aplicação temos um Controller que é responsável por rotear em qual endpoint cada chamada irá utilizar. Não há nenhuma regra de negócio no Controller, elas foram movidas para o service. Nesse service, utilizamos as classes auxiliares Call e Cache para realizar chaamadas na pokeAPI e armazenar os dados utilizando injeção de independências. Essas classes podem ser encontradas no pacote /helpers. Nesse mesmo pacote você encontrará a classe GlobalExceptionValidator que lida com os erros que podem acontecer durante a execução das requests.
+
+Dentro do pacote /test você encontrará testes unitários para as funcionalidades da aplicação. 
+
+
+### Conclusão
+
+É basicamente isso, espero que goste da pokemon-api!
