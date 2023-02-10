@@ -1,14 +1,18 @@
 package com.pokemon.pokemon.helpers;
+import org.springframework.stereotype.Component;
+
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpClient;
 import java.io.IOException;
 
+
+@Component
 public class Call {
 
-    public static String makeCall(HttpRequest request) {
+    public  String makeCall(HttpRequest request) {
         try {
-            HttpResponse<String> response = null;
+            HttpResponse<String> response;
 
             response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
             return response.body();
@@ -19,7 +23,7 @@ public class Call {
         }
 
 
-        return null;
+        return "";
     }
 
 

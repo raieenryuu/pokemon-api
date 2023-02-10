@@ -24,8 +24,11 @@ public class PokemonService implements IPokemonService{
 
     private  Cache cache;
 
-     PokemonService(Cache cache) {
+    private Call call;
+
+     PokemonService(Cache cache, Call call) {
         this.cache = cache;
+        this.call = call;
      }
 
 
@@ -52,7 +55,7 @@ public class PokemonService implements IPokemonService{
 
 
 
-            String body = Call.makeCall(request);
+            String body = call.makeCall(request);
 
 
             if (body.contains("Not Found")) {
