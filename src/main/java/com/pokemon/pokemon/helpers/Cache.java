@@ -14,6 +14,7 @@ public class Cache implements ICache {
 
     public void add(Pokemon pokemon) {
 
+
         Pokemon existingPokemon = get(pokemon.id);
 
 
@@ -54,4 +55,11 @@ public class Cache implements ICache {
 
         return cache;
     }
+
+
+    public static void cleanCache() {
+
+        cache.removeAll(cache);
+    }
+
 }
