@@ -1,22 +1,12 @@
+
+
+
 services:
-  db:
-    container_name: postgres
-    image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      PGDATA: /data/postgres
-    volumes:
-      - db:/data/postgres
+  pokemon-api:
+    container_name: pokemon-api
+    build:
+      context: pokemon-api
+      dockerfile: Dockerfile
+    image: pokemon-api:latest
     ports:
-      - "5432:5432"
-    networks:
-      - db
-    restart: unless-stopped
-
-networks:
-  db:
-    driver: bridge
-
-volumes:
-  db:
+      - 8080:8080
