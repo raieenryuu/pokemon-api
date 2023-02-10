@@ -97,9 +97,9 @@ DELETE /v1/pokemon/{id}
 
 ### Alguns detalhes
 
-Nessa aplicação temos um Controller que é responsável por rotear em qual endpoint cada chamada irá utilizar. Não há nenhuma regra de negócio no Controller, elas foram movidas para o service. Nesse service, utilizamos as classes auxiliares Call e Cache para realizar chaamadas na pokeAPI e armazenar os dados utilizando injeção de independências. Essas classes podem ser encontradas no pacote /helpers. Nesse mesmo pacote você encontrará a classe GlobalExceptionValidator que lida com os erros que podem acontecer durante a execução das requests.
+Nessa aplicação temos um Controller que é responsável por rotear qual método rodar de acordo com a url de cada chamada. Não há regras de negócio no Controller, elas foram movidas para o service. Nesse service, utilizamos as classes auxiliares Call e Cache através de injeção de dependências para realizar chaamadas na pokeAPI e armazenar os dados. Essas classes podem ser encontradas na pasta /helpers. Nesse mesmo diretório você encontrará a classe GlobalExceptionValidator que lida com os erros que podem acontecer durante a execução das requests.
 
-Dentro do pacote /test você encontrará testes unitários para as funcionalidades da aplicação. 
+Dentro do diretório /test você encontrará testes unitários para as funcionalidades da aplicação. 
 
 
 ### Conclusão
