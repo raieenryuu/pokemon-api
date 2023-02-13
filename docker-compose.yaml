@@ -5,7 +5,7 @@ services:
   pokemon-api:
     container_name: pokemon-api
     build:
-      context: pokemon-api
+      context: ./
       dockerfile: Dockerfile
     image: pokemon-api:latest
     ports:
