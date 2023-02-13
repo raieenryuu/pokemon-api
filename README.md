@@ -32,22 +32,27 @@ user@user:~$ git clone https://github.com/raieenryuu/pokemon-api.git
 ```
 Depois disso, temos algumas opções distintas
 
-O modo mais fácil de rodar o app, e o modo que eu recomendo é usando o Docker Compose. Para isso [você precisa ter o Docker instalado em sua máquina](https://docs.docker.com/get-docker/).
+O modo mais fácil de rodar o app, e o modo que eu recomendo é usando o Docker Compose. Para isso [você precisa ter o Docker instalado em sua máquina](https://docs.docker.com/get-docker/) e
+também o JDK19.
 
-Basta acessar o repositório de seu terminar e utilizar o seguinte comando:
+Basta acessar o repositório de seu terminal e utilizar os seguintes comandos:
+
+```console
+user@user:~/pokemon-api ./mvwn clean package
+```
 
 ```console
 user@user:~/pokemon-api docker compose up
 ```
-E é basicamente isso. O aplicativo já estará rodando em sua máquina com a magia do Docker. Voce nem precisa ter o Java instalado.
+E é basicamente isso. O aplicativo já estará rodando em sua máquina.
 
-O próximo método é mais complicado, você precisará ter o JDK 19 instalado. Com o diretório da api em seu terminal, você precisará criar um arquivo
+O próximo método é rodando o arquivo JAR diretamento do terminal, você precisará ter somente o JDK 19 instalado. Com o diretório da api em seu terminal, você precisará criar buildar a aplicação em um
 jar usando o seguinte comando:
 
 ```console
 user@user:~/pokemon-api ./mvwn clean package
 ```
-Esse comando irá gerar um arquivo jar no diretório "target". Para executá-lo, utilize o seguinte comando:
+Para executá-lo, utilize o seguinte comando:
 
 ```console
 user@user:~/pokemon-api java -jar target/pokemon-0.0.1-SNAPSHOT.jar
